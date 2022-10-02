@@ -1,6 +1,8 @@
 import webapp2
 import unittest
 import json
+
+from error_codes import ErrorCodes
 from main import app
 
 
@@ -11,9 +13,8 @@ class TestHelloWebapp2(unittest.TestCase):
         print (dir(response))
         print (response.http_status_message(response.status_int))
         print (response.headers)
-        self.assertEqual(
-            json.dumps({
-                "data": "data"
-            }), response.body
-        )
-        self.assertEqual(404, response.status_int)
+        error = ErrorCodes.ErrorCodes4XX.code_4xx_000001
+        response_dict = {"errors": [error.to_dict()]}
+        self.assertEqual(400, response.status_int)
+        self.assertEqual(response_dict, json.loads(response.body))
+

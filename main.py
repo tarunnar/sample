@@ -9,7 +9,6 @@ class HelloWebapp2(webapp2.RequestHandler):
         response_dict = {"errors": [error.to_dict()]}
         self.response.headers.add("Content-type", "application/json")
         self.response.status_int = 400
-        json.loads()
         return self.response.write(json.dumps(response_dict))
 
 
