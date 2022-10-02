@@ -5,7 +5,6 @@ import json
 from error_codes import ErrorCodes
 from main import app
 
-
 class TestHelloWebapp2(unittest.TestCase):
     def test_sample(self):
         req = webapp2.Request.blank("/")
